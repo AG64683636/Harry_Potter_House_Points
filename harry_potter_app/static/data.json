@@ -1,0 +1,30 @@
+{
+    "Gryffindor": {
+        "points": 0,
+        "students": [
+            "Bob",
+            "James"
+        ]
+    },
+    "Hufflepuff": {
+        "points": 0,
+        "students": [
+            "Harry",
+            "Ron"
+        ]
+    },
+    "Ravenclaw": {
+        "points": 0,
+        "students": [
+            "Draco",
+            "Hagrid"
+        ]
+    },
+    "Slytherin": {
+        "points": 0,
+        "students": [
+            "Longbottom",
+            "Charles"
+        ]
+    }
+}

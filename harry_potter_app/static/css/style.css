@@ -1,0 +1,168 @@
+/* === Hogwarts Theme Stylesheet === */
+
+/* === Imports === */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Uncial+Antiqua&display=swap');
+
+/* === General Styles === */
+/* Styles applied globally to the body */
+body {
+    font-family: 'Cormorant Garamond', serif; 
+    background: url('/static/images/hogwarts-background.webp') no-repeat center center fixed; 
+    background-size: cover;
+    color: #f5f5f5; 
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Container for app layout */
+.container {
+    width: 90%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* === Header Styles === */
+/* Title styling for the application */
+header h1 {
+    font-family: 'Uncial Antiqua', serif;
+    text-align: center;
+    color: #ffdb58;
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 5px #000;
+    margin-bottom: 30px;
+}
+
+/* === House Card Styles === */
+/* Styling for each house's card container */
+.house-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add hover effects to house cards */
+.house-card:hover {
+    transform: scale(1.05); /* Slight enlargement on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Images inside the house cards */
+.house-card img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: auto;
+}
+
+/* House name styles (e.g., Gryffindor, Slytherin) */
+.house-card h3 {
+    font-family: 'Uncial Antiqua', serif;
+    margin: 15px 0 10px;
+}
+
+/* Buttons inside house cards */
+.house-card button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+/* Hover effect for buttons */
+.house-card button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* === Student List Styles === */
+/* Styling the student list container within each house card */
+.house-card ul {
+    max-height: 300px; /* Limit the height to avoid overflow */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-size: 1.3rem
+}
+
+/* Individual list items for students */
+.list-group-item {
+    border: none;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+/* === Points Display === */
+/* Shared styles for displaying house points */
+#Gryffindor-points,
+#Hufflepuff-points,
+#Ravenclaw-points,
+#Slytherin-points {
+    font-size: 1.6rem !important; /* Ensures visibility of point text */
+    font-weight: bold;
+    color: inherit; /* Use the color defined for each house */
+}
+
+/* Specific colors for each house's points */
+#Gryffindor-points { color: #e63946; } 
+#Hufflepuff-points { color: #f4a261; }
+#Ravenclaw-points { color: #2a9d8f; }
+#Slytherin-points { color: #2b9348; } 
+
+/* === House Name Colors === */
+/* Individual color coding for house names */
+#Gryffindor-name { color: #e63946; }
+#Hufflepuff-name { color: #f4a261; }
+#Ravenclaw-name { color: #2a9d8f; }
+#Slytherin-name { color: #2b9348; }
+
+/* === Snowfall Effect === */
+/* Fullscreen canvas for the snowfall animation */
+#snowfall-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 1; /* Place behind other elements */
+}
+
+/* === Search Bar Styles === */
+/* Container for the search bar */
+.search-bar-container {
+    position: absolute; /* Position the bar at the top-right */
+    top: 10px; /* Vertical positioning */
+    right: 10px; /* Horizontal positioning */
+    z-index: 1000; /* Ensure it appears above other elements */
+    width: 250px;
+}
+
+/* Styling for the search input field */
+#student-search {
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    background: rgba(0, 0, 0, 0.7); 
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Placeholder text styling for the search bar */
+#student-search::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}

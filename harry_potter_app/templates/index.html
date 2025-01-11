@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts House Points</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/audio-control.js') }}"></script>
+</head>
+<body>
+    <!-- Mute Button for controlling background music -->
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+        <button id="mute-button" class="btn btn-sm btn-light">🔊</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-audio" autoplay loop>
+        <source src="{{ url_for('static', filename='audio/background-music.mp3') }}" type="audio/mpeg">
+        <!-- Fallback message for browsers that do not support audio -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Search Bar-->
+    <div class="search-bar-container">
+        <input 
+            type="text" 
+            id="student-search" 
+            class="form-control" 
+            placeholder="Search for a student" 
+            oninput="filterStudents(this.value)">
+        <div id="no-results" style="display: none; text-align: center; color: white;">No matches found.</div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container py-5">
+
+        <header>
+            <h1>Hogwarts House Points</h1>
+        </header>
+
+        <!-- Houses Section -->
+        <div class="row text-center">
+            <!-- Loop through each house to dynamically generate content -->
+            {% for house in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"] %}
+            <div class="col-md-3">
+                <!-- Card for each house -->
+                <div class="house-card">
+                    <!-- House Image -->
+                    <img src="{{ url_for('static', filename='images/' + house|lower + '.webp') }}" alt="{{ house }}" class="img-fluid mb-2">
+                    <!-- House Name -->
+                    <h3 id="{{ house }}-name">{{ house }}</h3>
+                    <!-- Points Control Buttons -->
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-danger me-2" onclick="updatePoints('{{ house }}', -5)">-</button>
+                        <p id="{{ house }}-points" class="fs-5 m-0"></p>
+                        <button class="btn btn-success ms-2" onclick="updatePoints('{{ house }}', 5)">+</button>
+                    </div>
+                    <!-- Student List -->
+                    <ul id="{{ house }}-students" class="list-group mt-3">
+                        <!-- Students will be dynamically populated via JavaScript -->
+                    </ul>
+                    <!-- Input and Button for Adding Students -->
+                    <div class="d-flex">
+                        <input type="text" id="{{ house }}-student-name" class="form-control me-2" placeholder="Student Name">
+                        <button class="btn btn-primary" onclick="addStudent('{{ house }}')">+</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Snowfall Effect -->
+    <canvas id="snowfall-canvas"></canvas>
+    <!-- Script for snowfall effect -->
+    <script src="{{ url_for('static', filename='js/snowfall.js') }}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
